@@ -1,26 +1,29 @@
-<div class="card bg-base-100 shadow-xl">
-  <div class="card-body">
-    <h2 class="card-title">Post</h2>
-    <button class="btn btn-warning" (click)="tehe()">tehe</button>
-    <div class="overflow-x-auto">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Title</th>
-            <th>Body</th>
-          </tr>
-        </thead>
-        <tbody>
-          @for (post of posts; track $index) {
-          <tr>
-            <th>{{post.id}}</th>
-            <th>{{post.title}}</th>
-            <th>{{post.body}}</th>
-          </tr>
-          }
-        </tbody>
-      </table>
+<app-default>
+
+  <div class="card bg-base-100 shadow-xl">
+    <div class="card-body">
+      <h2 class="card-title">Post</h2>
+      <button class="btn btn-warning" (click)="tehe()">tehe</button>
+      <div class="overflow-x-auto">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Title</th>
+              <th>Body</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (post of posts; track $index) {
+            <tr>
+              <th>{{post.id}}</th>
+              <th>{{post.title}}</th>
+              <th>{{post.body}}</th>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-</div>
+</app-default>

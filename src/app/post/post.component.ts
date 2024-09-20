@@ -1,11 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { PostService } from './post.service';
 import { Post } from './post.model';
+import { DefaultComponent } from '../layout/default/default.component';
 
 @Component({
   selector: 'app-post',
   standalone: true,
-  imports: [],
+  imports: [DefaultComponent],
   templateUrl: './post.component.html',
   styleUrl: './post.component.css',
 })
