@@ -10,6 +10,4 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent {
-  title = 'angular-daisyui';
-}
+export class AppComponent {}

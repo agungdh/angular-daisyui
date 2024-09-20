@@ -1,3 +1,11 @@
 import { Routes } from '@angular/router';
+import { UserComponent } from './user/user.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+  {
+    path: 'user',
+    component: UserComponent,
+  },
+  { path: '**', component: PageNotFoundComponent },
+];
