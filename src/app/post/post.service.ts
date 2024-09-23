@@ -10,6 +10,6 @@ export class PostService {
   private readonly http = inject(HttpClient);
 
   getPostData(): Observable<Post[]> {
-    return this.http.get<Post[]>('https://jsonplaceholder.typicode.com/posts');
+    return this.http.get<Post[]>('/posts');
   }
 }
