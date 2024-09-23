@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-default',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './default.component.html',
-  styleUrl: './default.component.css'
+  styleUrl: './default.component.css',
 })
-export class DefaultComponent {
-
-}
+export class DefaultComponent {}
