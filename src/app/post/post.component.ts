@@ -16,11 +16,10 @@ export class PostComponent implements OnInit {
   posts: Post[] = [];
 
   ngOnInit(): void {
-    this.postService.getPostData().subscribe((datas: Post[]) => {
-      this.posts = this.posts.concat(datas);
-
-      console.log(this.posts.length);
-    });
+    // this.postService.getPostData().subscribe((datas: Post[]) => {
+    //   this.posts = this.posts.concat(datas);
+    //   console.log(this.posts.length);
+    // });
   }
 
   tehe() {
