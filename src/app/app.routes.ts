@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { UserComponent } from './user/user.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PostComponent } from './post/post.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 export const routes: Routes = [
   {
@@ -12,5 +12,5 @@ export const routes: Routes = [
     path: 'post',
     component: PostComponent,
   },
-  { path: '**', component: PageNotFoundComponent },
+  { path: '**', component: NotFoundComponent },
 ];
