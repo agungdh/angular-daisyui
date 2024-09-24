@@ -2,15 +2,29 @@ import { Routes } from '@angular/router';
 import { UserComponent } from './user/user.component';
 import { PostComponent } from './post/post.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { FormComponent } from './page/admin/form/form.component';
+import { DefaultComponent } from './layout/default/default.component';
 
 export const routes: Routes = [
   {
-    path: 'user',
-    component: UserComponent,
-  },
-  {
-    path: 'post',
-    component: PostComponent,
+    path: '',
+    component: DefaultComponent,
+    children: [
+      {
+        path: 'admin',
+        children: [
+          {
+            path: 'form',
+            children: [
+              {
+                path: '',
+                component: FormComponent
+              }
+            ]
+          }
+        ]
+      },
+    ]
   },
   { path: '**', component: NotFoundComponent },
 ];
