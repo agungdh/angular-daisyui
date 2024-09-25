@@ -16,12 +16,44 @@ export class FormComponent {
   private readonly destroyRef = inject(DestroyRef);
 
   forms: Form[] = [];
+  cursor: string | null = null
+  nextable: boolean = false
 
   ngOnInit(): void {
-    this.formService.getData()
+    this.getData()
+  }
+
+  getData(refreshData: boolean = false) {
+    this.formService.getData(refreshData ? null : this.cursor)
     .pipe(takeUntilDestroyed(this.destroyRef))
-    .subscribe((response: PaginatedResponse<Form>) => {
-      this.forms = this.forms.concat(response.data);
+    .subscribe((response: PaginatedResponse<Form[]>) => {
+      this.forms = refreshData ? this.forms = response.data : this.forms.concat(response.data);
+
+      this.cursor = response.next_cursor
+
+      this.nextable = response.next_cursor ? true : false
     });
+  }
+
+  up(id: number) {
+    this.formService.up(id).pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => {
+      this.getData(true)
+    })
+  }
+
+  down(id: number) {
+    this.formService.down(id).pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => {
+      this.getData(true)
+    })
+  }
+
+  hapus(id: string) {
+    this.formService.deleteData(id).pipe(takeUntilDestroyed(this.destroyRef)).subscribe()
+  }
+
+  reorder() {
+    this.formService.reoder().pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => {
+      this.getData(true)
+    })
   }
 }
