@@ -10,8 +10,8 @@ import { PaginatedResponse } from '../../../shared/paginated-response.model';
 export class FormService {
   private readonly http = inject(HttpClient);
 
-  getData(cursor: string | null = null): Observable<PaginatedResponse<Form[]>> {
-    return this.http.get<PaginatedResponse<Form[]>>(`/admin/form?cursor=${cursor ?? ''}`);
+  getData(): Observable<Form[]> {
+    return this.http.get<Form[]>(`/admin/form`);
   }
 
   up(id: number): Observable<any> {
@@ -26,7 +26,11 @@ export class FormService {
     return this.http.get(`/admin/form/reorder`);
   }
 
-  deleteData(id: string): Observable<any> {
-    return this.http.get(`/admin/form/reoder`);
+  disable(id: string): Observable<any> {
+    return this.http.get(`/admin/form/${id}/disable`);
+  }
+
+  enable(id: string): Observable<any> {
+    return this.http.get(`/admin/form/${id}/enable`);
   }
 }

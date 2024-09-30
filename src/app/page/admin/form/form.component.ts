@@ -3,6 +3,7 @@ import { FormService } from './form.service';
 import { Form } from './form.model';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { PaginatedResponse } from '../../../shared/paginated-response.model';
+import toast from '../../../shared/toast';
 
 @Component({
   selector: 'app-form',
@@ -16,44 +17,71 @@ export class FormComponent {
   private readonly destroyRef = inject(DestroyRef);
 
   forms: Form[] = [];
-  cursor: string | null = null
-  nextable: boolean = false
 
   ngOnInit(): void {
     this.getData()
   }
 
-  getData(refreshData: boolean = false) {
-    this.formService.getData(refreshData ? null : this.cursor)
+  getData() {
+    this.formService.getData()
     .pipe(takeUntilDestroyed(this.destroyRef))
-    .subscribe((response: PaginatedResponse<Form[]>) => {
-      this.forms = refreshData ? this.forms = response.data : this.forms.concat(response.data);
-
-      this.cursor = response.next_cursor
-
-      this.nextable = response.next_cursor ? true : false
+    .subscribe((forms: Form[]) => {
+      this.forms = forms
     });
   }
 
   up(id: number) {
     this.formService.up(id).pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => {
-      this.getData(true)
+      this.getData()
+
+      toast.fire({
+        icon: 'success',
+        title: 'Berhasil up order'
+      })
     })
   }
 
   down(id: number) {
     this.formService.down(id).pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => {
-      this.getData(true)
+      this.getData()
+
+      toast.fire({
+        icon: 'success',
+        title: 'Berhasil down order'
+      })
     })
   }
 
-  hapus(id: string) {
-    this.formService.deleteData(id).pipe(takeUntilDestroyed(this.destroyRef)).subscribe()
+  disable(id: string) {
+    this.formService.disable(id).pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => {
+      this.getData()
+
+      toast.fire({
+        icon: 'success',
+        title: 'Berhasil disable form'
+      })
+    })
+  }
+
+  enable(id: string) {
+    this.formService.enable(id).pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => {
+      this.getData()
+
+      toast.fire({
+        icon: 'success',
+        title: 'Berhasil enable form'
+      })
+    })
   }
 
   reorder() {
     this.formService.reoder().pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => {
-      this.getData(true)
+      this.getData()
+
+      toast.fire({
+        icon: 'success',
+        title: 'Berhasil reorder'
+      })
     })
   }
 }
