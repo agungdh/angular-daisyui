@@ -3,6 +3,7 @@ import { UserComponent } from './user/user.component';
 import { PostComponent } from './post/post.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { FormComponent } from './page/admin/form/form.component';
+import { FormComponent as FormCrudComponent } from './page/admin/form/form/form.component';
 import { DefaultComponent } from './layout/default/default.component';
 
 export const routes: Routes = [
@@ -19,6 +20,10 @@ export const routes: Routes = [
               {
                 path: '',
                 component: FormComponent
+              },
+              {
+                path: 'create',
+                component: FormCrudComponent
               }
             ]
           }
