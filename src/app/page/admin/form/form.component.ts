@@ -5,12 +5,13 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { PaginatedResponse } from '../../../shared/paginated-response.model';
 import toast from '../../../shared/toast';
 import { RouterLink } from '@angular/router';
+
 @Component({
   selector: 'app-form',
   standalone: true,
   imports: [RouterLink],
   templateUrl: './form.component.html',
-  styleUrl: './form.component.css'
+  styleUrl: './form.component.scss'
 })
 export class FormComponent {
   private readonly formService = inject(FormService);

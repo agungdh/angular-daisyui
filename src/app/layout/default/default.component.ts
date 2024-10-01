@@ -6,6 +6,6 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [RouterLink, RouterOutlet],
   templateUrl: './default.component.html',
-  styleUrl: './default.component.css',
+  styleUrl: './default.component.scss',
 })
 export class DefaultComponent {}

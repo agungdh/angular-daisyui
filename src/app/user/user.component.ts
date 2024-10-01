@@ -6,7 +6,7 @@ import { DefaultComponent } from '../layout/default/default.component';
   standalone: true,
   imports: [DefaultComponent],
   templateUrl: './user.component.html',
-  styleUrl: './user.component.css'
+  styleUrl: './user.component.scss'
 })
 export class UserComponent {
 

@@ -9,7 +9,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   standalone: true,
   imports: [DefaultComponent],
   templateUrl: './post.component.html',
-  styleUrl: './post.component.css',
+  styleUrl: './post.component.scss',
 })
 export class PostComponent implements OnInit {
   private readonly postService = inject(PostService);
