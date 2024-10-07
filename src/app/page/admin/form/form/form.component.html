@@ -5,46 +5,90 @@
 
 
 
-  <form class="mx-auto">
+  <form class="mx-auto" [formGroup]="formForm" (ngSubmit)="save()">
 
     <div class="mb-5">
       <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-      <input type="text" id="name"
+      <input type="text" id="name" formControlName="name"
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         placeholder="Name" />
+      @if (formForm.controls.name.hasError('incorrect')) {
+      <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{formForm.controls.name.getError('incorrect')}}</p>
+      }
     </div>
 
+    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Duration</label>
     <div class="grid gap-6 mb-5 md:grid-cols-2">
       <div>
-        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-        <input type="text" id="name"
+        <label for="duration_day" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Day</label>
+        <input type="number" id="duration_day" formControlName="duration_day"
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          placeholder="Name" />
+          placeholder="Day" />
+        @if (formForm.controls.duration_day.hasError('incorrect')) {
+        <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{formForm.controls.duration_day.getError('incorrect')}}
+        </p>
+        }
       </div>
       <div>
-        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-        <input type="text" id="name"
+        <label for="duration_month" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Month</label>
+        <input type="number" id="duration_month" formControlName="duration_month"
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          placeholder="Name" />
+          placeholder="Month" />
+        @if (formForm.controls.duration_month.hasError('incorrect')) {
+        <p class="mt-2 text-sm text-red-600 dark:text-red-500">
+          {{formForm.controls.duration_month.getError('incorrect')}}</p>
+        }
+      </div>
+    </div>
+
+    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Age Restriction</label>
+    <div class="grid gap-6 mb-5 md:grid-cols-2">
+      <div>
+        <label for="age_restriction_day"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Day</label>
+        <input type="number" id="age_restriction_day" formControlName="age_restriction_day"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Day" />
+        @if (formForm.controls.age_restriction_day.hasError('incorrect')) {
+        <p class="mt-2 text-sm text-red-600 dark:text-red-500">
+          {{formForm.controls.age_restriction_day.getError('incorrect')}}</p>
+        }
+      </div>
+      <div>
+        <label for="age_restriction_month"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Month</label>
+        <input type="number" id="age_restriction_month" formControlName="age_restriction_month"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Month" />
+        @if (formForm.controls.age_restriction_month.hasError('incorrect')) {
+        <p class="mt-2 text-sm text-red-600 dark:text-red-500">
+          {{formForm.controls.age_restriction_month.getError('incorrect')}}</p>
+        }
       </div>
     </div>
 
     <div class="mb-5">
       <label for="gender" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gender</label>
-      <select id="gender"
+      <select id="gender" formControlName="gender"
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
         <option value="">Gender</option>
         <option value="Laki">Laki</option>
         <option value="Perempuan">Perempuan</option>
         <option value="Semua">Semua</option>
       </select>
+      @if (formForm.controls.gender.hasError('incorrect')) {
+      <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{formForm.controls.gender.getError('incorrect')}}</p>
+      }
     </div>
 
     <div class="mb-5">
       <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
-      <textarea id="description" rows="4"
+      <textarea id="description" formControlName="description" rows="4"
         class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         placeholder="Description"></textarea>
+      @if (formForm.controls.description.hasError('incorrect')) {
+      <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{formForm.controls.description.getError('incorrect')}}</p>
+      }
     </div>
 
     <button type="submit"

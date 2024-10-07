@@ -33,4 +33,8 @@ export class FormService {
   enable(id: string): Observable<any> {
     return this.http.get(`/admin/form/${id}/enable`);
   }
+
+  store(form: any): Observable<any> {
+    return this.http.post(`/admin/form`, form);
+  }
 }
