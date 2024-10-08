@@ -42,7 +42,8 @@
               class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Up</a>
             <a (click)="down(form.order)" href="javascript:void(0)"
               class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Down</a>
-            <a href="javascript:void(0)" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+            <a routerLink="/admin/form/edit/{{form.id}}"
+              class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
             @if (form.status == 'active') {
             <a (click)="disable(form.id)" href="javascript:void(0)"
               class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Disable</a>

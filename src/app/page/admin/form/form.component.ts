@@ -14,17 +14,17 @@ import { RouterLink } from '@angular/router';
   styleUrl: './form.component.scss'
 })
 export class FormComponent {
-  private readonly formService = inject(FormService);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly formService = inject(FormService);
 
   forms: Form[] = [];
 
   ngOnInit(): void {
-    this.getData()
+    this.getDatas()
   }
 
-  getData() {
-    this.formService.getData()
+  getDatas() {
+    this.formService.getDatas()
     .pipe(takeUntilDestroyed(this.destroyRef))
     .subscribe((forms: Form[]) => {
       this.forms = forms
@@ -33,7 +33,7 @@ export class FormComponent {
 
   up(id: number) {
     this.formService.up(id).pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => {
-      this.getData()
+      this.getDatas()
 
       toast.fire({
         icon: 'success',
@@ -44,7 +44,7 @@ export class FormComponent {
 
   down(id: number) {
     this.formService.down(id).pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => {
-      this.getData()
+      this.getDatas()
 
       toast.fire({
         icon: 'success',
@@ -55,7 +55,7 @@ export class FormComponent {
 
   disable(id: string) {
     this.formService.disable(id).pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => {
-      this.getData()
+      this.getDatas()
 
       toast.fire({
         icon: 'success',
@@ -66,7 +66,7 @@ export class FormComponent {
 
   enable(id: string) {
     this.formService.enable(id).pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => {
-      this.getData()
+      this.getDatas()
 
       toast.fire({
         icon: 'success',
@@ -77,7 +77,7 @@ export class FormComponent {
 
   reorder() {
     this.formService.reoder().pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => {
-      this.getData()
+      this.getDatas()
 
       toast.fire({
         icon: 'success',

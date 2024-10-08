@@ -10,8 +10,12 @@ import { PaginatedResponse } from '../../../shared/paginated-response.model';
 export class FormService {
   private readonly http = inject(HttpClient);
 
-  getData(): Observable<Form[]> {
+  getDatas(): Observable<Form[]> {
     return this.http.get<Form[]>(`/admin/form`);
+  }
+
+  getData(id: string): Observable<Form> {
+    return this.http.get<Form>(`/admin/form/${id}`);
   }
 
   up(id: number): Observable<any> {
